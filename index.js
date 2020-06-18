@@ -1,6 +1,11 @@
 const request = require('request-promise-native');
 const inquirer = require('inquirer');
 const ProgressBar = require('progress');
+const Configstore = require('configstore');
+const packageJson = require('./package.json');
+const fs = require('fs');
+
+const config = new Configstore(packageJson.name)
 
 const ENDPOINT = 'https://discordapp.com/api/v6/';
 var headers = {};
@@ -73,15 +78,44 @@ async function removeMessages(type, target, user){
   }
 }
 
+async function getToken(){
+  if (fs.existsSync(config.path)){
+    token = config.get('token')
+    return token
+  } else {
+    var answers = await inquirer.prompt([{
+      'type': 'input',
+      'name': 'token',
+      'message': 'Token'
+    }])
+
+    var wantsToSave = await inquirer.prompt([{
+      'type': 'list',
+      'name': 'save',
+      'message': 'Would you like to save your token for later use?',
+      'choices': [{
+        'value': 'yes',
+        'name': 'Yes'
+      },
+      {
+        'value': 'no',
+        'name': 'No'
+      }]
+    }])
+    if (wantsToSave.save == 'yes'){
+      config.set('token', answers.token)
+    }
+    token = answers.token
+    return token
+  }
+}
+
 async function userInput() {
-  var answers = await inquirer.prompt([{
-    'type': 'input',
-    'name': 'token',
-    'message': 'Token'
-  }]);
+
+  let token = await getToken()
 
   headers = {
-    'Authorization': answers.token
+    'Authorization': token
   };
 
   let user = JSON.parse(await request({
@@ -143,7 +177,7 @@ async function userInput() {
 
     return x;
   });
-
+y
   answers = await inquirer.prompt([
     {
       'type': 'list',

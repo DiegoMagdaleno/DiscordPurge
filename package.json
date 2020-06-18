@@ -2,6 +2,7 @@
   "name": "discord-purge",
   "version": "1.0.0",
   "dependencies": {
+    "configstore": "^5.0.1",
     "inquirer": "^5.2.0",
     "progress": "^2.0.0",
     "request": "^2.85.0",
