@@ -1,6 +1,18 @@
 {
   "name": "discord-purge",
   "version": "1.0.0",
+  "description": "Purge your DMs easily and fast in a DM or Guild on Discord",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DiegoMagdaleno/DiscordPurge.git"
+  },
+  "author": {
+    "name": "Diego Magdaleno",
+    "email": "diegomagdaleno@protonmail.com",
+    "url": "https://diegomagdaleno.dev"
+  },
+  "contributors": ["Nepeta/Ominousness", "lgladdy", "kakolisgay"],
   "dependencies": {
     "configstore": "^5.0.1",
     "inquirer": "^5.2.0",
