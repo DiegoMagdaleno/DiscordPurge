@@ -9,7 +9,7 @@ Remove all of your messages from a given Discord guild (server) or a DM (direct 
 ## Table of contents
 
 - [Installation](#installation)
-- [How to get the token](#how-to-get-the-token-(chrome))
+- [How to get the token](#how-to-get-the-token-chrome)
 - [Bugs](#bugs)
 
 ## Installation
