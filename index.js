@@ -43,7 +43,8 @@ function sleep(ms) {
 
 async function removeMessages(type, target, user){
   let bar;
-
+  let ind;
+  
   while (true) {
     let res = await getMessages(type, target, user, offset);
     if (res.hasOwnProperty('document_indexed') && ind == 0) {
